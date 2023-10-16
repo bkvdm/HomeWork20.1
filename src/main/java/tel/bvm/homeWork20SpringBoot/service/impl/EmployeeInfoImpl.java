@@ -27,7 +27,7 @@ public class EmployeeInfoImpl implements EmployeeInfo {
 
     public String greeting() {
         return "Добро пожаловать" + "Для внесения информации о сотрудниках нужно в адресной строке выбрать и ввести фамилие, имя, отчество, например:" +
-                "employee/newEmployee?surname=Петров&name=Пётр&fatherName=Петрович";
+                "http://localhost:8080/employee/newEmployee?surname=Яковлев&name=Яков&fatherName=Михайлович";
     }
 
     @Override

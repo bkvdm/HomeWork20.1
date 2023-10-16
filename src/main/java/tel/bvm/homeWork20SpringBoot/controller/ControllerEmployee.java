@@ -2,9 +2,11 @@ package tel.bvm.homeWork20SpringBoot.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import tel.bvm.homeWork20SpringBoot.service.api.EmployeeInfo;
 import tel.bvm.homeWork20SpringBoot.service.impl.Employee;
 
+@RestController
 public class ControllerEmployee {
 
     public final EmployeeInfo employeeInfo;
@@ -41,10 +43,8 @@ public class ControllerEmployee {
         Employee employee = new Employee(surname, name, fatherName, departmentNumber, salaryValue);
         employeeInfo.enterNewEmployee(employee);
         return "Информация о сотруднике " + surname + " " + name + " " + fatherName + ", введена успешно. " + "Далее нужно: " +
-                "1) ввести номер отдела (от 1 - 5), по которому нужно сделать выборку, процент индексации заработной платы и размер зарплаты относительно которой, нужно сделать сортировку, например: "
-                + "employee/sample/departmentNumber?=1&indexSalary?=20&salaryParameter?=150_000 " +
-                "2) введите значение зарплаты относительно размера которой нужно сделать сортировку, например: " +
-                "employee/sample/departmentNumber?=100_000";
+                "ввести номер отдела (от 1 - 5), по которому нужно сделать выборку, процент индексации заработной платы и размер зарплаты относительно которой, нужно сделать сортировку, например: "
+                + "http://localhost:8080/employee/sample?departmentNumber=1&indexSalary=20&salaryParameter=150000";
     }
 
     @GetMapping(path = "employee/print")
