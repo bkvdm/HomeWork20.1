@@ -66,13 +66,21 @@ public class EmployeeInfoImpl implements EmployeeInfo {
     }
 
     @Override
-    public int sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(int sampleDepartmentNumber, int sampleIndexSalary, int sampleSalaryParameter) {
-        employeeWithMaxSalary(sampleDepartmentNumber, employeeDataArchive());
-        employeeWithMinSalary(sampleDepartmentNumber, employeeDataArchive());
-        sumSalary(sampleDepartmentNumber, employeeDataArchive());
-        salaryIndexation(sampleIndexSalary, sampleDepartmentNumber, employeeDataArchive());
-        salarySamplingParameter(sampleSalaryParameter, employeeDataArchive());
-        return sampleDepartmentNumber;
+    public String sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(int sampleDepartmentNumber, int sampleIndexSalary, int sampleSalaryParameter) {
+
+//        employeeWithMaxSalary(sampleDepartmentNumber, employeeDataArchive());
+//        employeeWithMinSalary(sampleDepartmentNumber, employeeDataArchive());
+//        sumSalary(sampleDepartmentNumber, employeeDataArchive());
+//        salaryIndexation(sampleIndexSalary, sampleDepartmentNumber, employeeDataArchive());
+//        salarySamplingParameter(sampleSalaryParameter, employeeDataArchive());
+
+        String printMaxSalary = employeeWithMaxSalary(sampleDepartmentNumber, employeeDataArchive());
+        String printMinSalary = employeeWithMinSalary(sampleDepartmentNumber, employeeDataArchive());
+        String printSumSalary = sumSalary(sampleDepartmentNumber, employeeDataArchive());
+        String printSalaryIndexation = salaryIndexation(sampleIndexSalary, sampleDepartmentNumber, employeeDataArchive());
+        String printSalarySamplingParameter = salarySamplingParameter(sampleSalaryParameter, employeeDataArchive());
+
+        return printMaxSalary + printMinSalary + printSumSalary + printSalaryIndexation + printSalarySamplingParameter;
     }
 
 //    @Override
@@ -81,7 +89,7 @@ public class EmployeeInfoImpl implements EmployeeInfo {
 //        return sampleIndexSalary;
 //    }
 
-    public void employeeWithMaxSalary(int selectedDepartment, List<Employee> employeeDataArchive) {
+    public String employeeWithMaxSalary(int selectedDepartment, List<Employee> employeeDataArchive) {
         int maxSalary = 0;
         int employeeWithMaxSalary = 0;
         for (int i = 0; i < employeeDataArchive.size(); i++) {
@@ -92,10 +100,10 @@ public class EmployeeInfoImpl implements EmployeeInfo {
                 }
             }
         }
-        System.out.println("maxSalary = " + maxSalary + " " + employeeDataArchive.get(employeeWithMaxSalary).getSurname() + " " + employeeDataArchive.get(employeeWithMaxSalary).getName() + " " + employeeDataArchive.get(employeeWithMaxSalary).getFatherName());
+        return ("maxSalary = " + maxSalary + " " + employeeDataArchive.get(employeeWithMaxSalary).getSurname() + " " + employeeDataArchive.get(employeeWithMaxSalary).getName() + " " + employeeDataArchive.get(employeeWithMaxSalary).getFatherName());
     }
 
-    public void employeeWithMinSalary(int selectedDepartment, List<Employee> employeeDataArchive) {
+    public String employeeWithMinSalary(int selectedDepartment, List<Employee> employeeDataArchive) {
         int employeeWithMinSalary = 0;
         int minSalary = 0;
         int salaryIntroduce = 0;
@@ -113,47 +121,55 @@ public class EmployeeInfoImpl implements EmployeeInfo {
                 employeeWithMinSalary = i;
             }
         }
-        System.out.println("minSalary = " + minSalary + " " + employeeDataArchive.get(employeeWithMinSalary).getSurname() + " " + employeeDataArchive.get(employeeWithMinSalary).getName() + " " + employeeDataArchive.get(employeeWithMinSalary).getFatherName());
+        return ("minSalary = " + minSalary + " " + employeeDataArchive.get(employeeWithMinSalary).getSurname() + " " + employeeDataArchive.get(employeeWithMinSalary).getName() + " " + employeeDataArchive.get(employeeWithMinSalary).getFatherName());
     }
 
-    public void sumSalary(int selectedDepartment, List<Employee> employeeDataArchive) {
+    public String sumSalary(int selectedDepartment, List<Employee> employeeDataArchive) {
         int sumSalary = 0;
         int salaryIntroduce = 0;
+        String print = "";
         for (int i = 0; i < employeeDataArchive.size(); i++) {
             if (employeeDataArchive.get(i).getDepartment() == selectedDepartment) {
                 sumSalary = sumSalary + employeeDataArchive.get(i).getSalary();
                 salaryIntroduce++;
             }
             if (i == employeeDataArchive.size() - 1) {
-                System.out.println("sumSalary = " + sumSalary);
+                print = ("sumSalary = " + sumSalary);
                 if (salaryIntroduce > 0) {
-                    System.out.println("sumSalaryAverage = " + sumSalary / salaryIntroduce);
+                    print = ("sumSalaryAverage = " + sumSalary / salaryIntroduce);
                 } else
-                    System.out.println("Для расчёта средней зарплаты отдела, нужно наличие хотя бы одного сотрудника в отделе");
+                    print = ("Для расчёта средней зарплаты отдела, нужно наличие хотя бы одного сотрудника в отделе");
             }
         }
+        return print;
     }
 
-    public static void salaryIndexation(int salaryIndexation, int selectedDepartment, List<Employee> employeeDataArchive) {
-        System.out.println("Индексация зарплаты на " + salaryIndexation + " процентов:");
+    public String salaryIndexation(int salaryIndexation, int selectedDepartment, List<Employee> employeeDataArchive) {
+        String print = ("Индексация зарплаты на " + salaryIndexation + " процентов:");
+        String printIndexationResult = "";
         int salaryIntroduce = 0;
         for (int i = 0; i < employeeDataArchive.size(); i++) {
             if (employeeDataArchive.get(i).getDepartment() == selectedDepartment) {
                 salaryIntroduce++;
                 employeeDataArchive.get(i).setSalary(employeeDataArchive.get(i).getSalary() + employeeDataArchive.get(i).getSalary() * salaryIndexation / 100);
-                System.out.println(employeeDataArchive.get(i).getSurname() + " " + employeeDataArchive.get(i).getName() + " " + employeeDataArchive.get(i).getFatherName() + ", зарплата: " + employeeDataArchive.get(i).getSalary() + " персональный номер: " + employeeDataArchive.get(i).getPersonalNumber());
+                printIndexationResult = (employeeDataArchive.get(i).getSurname() + " " + employeeDataArchive.get(i).getName() + " " + employeeDataArchive.get(i).getFatherName() + ", зарплата: " + employeeDataArchive.get(i).getSalary() + " персональный номер: " + employeeDataArchive.get(i).getPersonalNumber());
             } else if (salaryIntroduce == 0 && i == employeeDataArchive.size() - 1)
-                System.out.println("Нет сотрудников в отделе, " + selectedDepartment + " чтобы можно было проиндексировать их зарплату");
+                printIndexationResult = ("Нет сотрудников в отделе, " + selectedDepartment + " чтобы можно было проиндексировать их зарплату");
         }
+        return print + printIndexationResult;
     }
 
-    public static void salarySamplingParameter(int salarySamplingParameter, List<Employee> employeeDataArchive) {
+    public String salarySamplingParameter(int salarySamplingParameter, List<Employee> employeeDataArchive) {
         int signArchiveSize = 0;
         for (int i = 0; i < employeeDataArchive.size(); i++) {
             if (employeeDataArchive.get(i).getSalary() >= salarySamplingParameter) {
                 signArchiveSize++;
             }
         }
+        String printHeadingOne = "";
+        String printHeadingTwo = "";
+        String printSalarySamplingParameterMax = "";
+        String printSalarySamplingParameterMin = "";
         if (signArchiveSize == employeeDataArchive.size()) {
             int countyIndexMax = 0;
             List<Object> salarySamplingParameterMax = new ArrayList<>(Arrays.asList());
@@ -163,9 +179,9 @@ public class EmployeeInfoImpl implements EmployeeInfo {
                     salarySamplingParameterMax.add(employeeDataArchive.get(i));
                 }
             }
-            System.out.println("Информация о сотрудниках с зарплатой, больше или равной " + salarySamplingParameter + ":");
+            printHeadingOne = ("Информация о сотрудниках с зарплатой, больше или равной " + salarySamplingParameter + ":");
             for (int i = 0; i < salarySamplingParameterMax.size(); i++) {
-                System.out.println("salarySamplingParameterMax[i] = " + salarySamplingParameterMax.get(i));
+                printSalarySamplingParameterMax = ("salarySamplingParameterMax[i] = " + salarySamplingParameterMax.get(i));
             }
         } else if (signArchiveSize == 0) {
             int countyIndexMin = 0;
@@ -176,9 +192,9 @@ public class EmployeeInfoImpl implements EmployeeInfo {
                     salarySamplingParameterMin.add(employeeDataArchive.get(i));
                 }
             }
-            System.out.println("Информация о сотрудниках с зарплатой, меньше " + salarySamplingParameter + ":");
+            printHeadingTwo = ("Информация о сотрудниках с зарплатой, меньше " + salarySamplingParameter + ":");
             for (int i = 0; i < salarySamplingParameterMin.size(); i++) {
-                System.out.println("salarySamplingParameterMin[i] = " + salarySamplingParameterMin.get(i));
+                printSalarySamplingParameterMin = ("salarySamplingParameterMin[i] = " + salarySamplingParameterMin.get(i));
             }
         } else if (signArchiveSize > 0 && signArchiveSize != 10) {
             int countyIndexMax = 0;
@@ -189,9 +205,9 @@ public class EmployeeInfoImpl implements EmployeeInfo {
                     salarySamplingParameterMax.add(employeeDataArchive.get(i));
                 }
             }
-            System.out.println("Информация о сотрудниках с зарплатой, больше или равной " + salarySamplingParameter + ":");
+            printHeadingOne = ("Информация о сотрудниках с зарплатой, больше или равной " + salarySamplingParameter + ":");
             for (int i = 0; i < salarySamplingParameterMax.size(); i++) {
-                System.out.println("salarySamplingParameterMax[i] = " + salarySamplingParameterMax.get(i));
+                printSalarySamplingParameterMax = ("salarySamplingParameterMax[i] = " + salarySamplingParameterMax.get(i));
             }
             int countyIndexMin = 0;
             List<Object> salarySamplingParameterMin = new ArrayList<>(Arrays.asList());
@@ -201,10 +217,11 @@ public class EmployeeInfoImpl implements EmployeeInfo {
                     salarySamplingParameterMin.add(employeeDataArchive.get(i));
                 }
             }
-            System.out.println("Информация о сотрудниках с зарплатой, меньше " + salarySamplingParameter + ":");
+            printHeadingTwo = ("Информация о сотрудниках с зарплатой, меньше " + salarySamplingParameter + ":");
             for (int i = 0; i < salarySamplingParameterMin.size(); i++) {
-                System.out.println("salarySamplingParameterMin[i] = " + salarySamplingParameterMin.get(i));
+                printSalarySamplingParameterMin = ("salarySamplingParameterMin[i] = " + salarySamplingParameterMin.get(i));
             }
         }
+        return printHeadingOne + printSalarySamplingParameterMax + printHeadingTwo + printSalarySamplingParameterMin;
     }
 }

@@ -25,7 +25,7 @@ public interface EmployeeInfo {
 
     StringBuilder print();
 
-    int sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(int sampleDepartmentNumber, int sampleIndexSalary, int sampleSalaryParameter);
+    String sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(int sampleDepartmentNumber, int sampleIndexSalary, int sampleSalaryParameter);
 
 //    int sampleIndexSalary(int sampleIndexSalary);
 
