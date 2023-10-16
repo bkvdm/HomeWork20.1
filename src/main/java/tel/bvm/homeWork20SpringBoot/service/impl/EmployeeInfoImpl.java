@@ -30,7 +30,7 @@ public class EmployeeInfoImpl implements EmployeeInfo {
                 "http://localhost:8080/employee/newEmployee?surname=Яковлев&name=Яков&fatherName=Михайлович";
     }
 
-    @Override
+//    @Override
     public List<Employee> employeeDataArchive() {
         List<Employee> employeeDataArchive = new ArrayList<>(Arrays.asList(
                 new Employee("Иванов", "Иван", "Иванович", departmentNumberGenerator(), salaryValueGenerator()),
@@ -49,6 +49,7 @@ public class EmployeeInfoImpl implements EmployeeInfo {
 
     @Override
     public void enterNewEmployee(Employee employee) {
+
         employeeDataArchive().add(employee);
     }
 
