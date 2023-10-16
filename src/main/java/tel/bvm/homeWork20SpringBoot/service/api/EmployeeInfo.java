@@ -5,6 +5,10 @@ import tel.bvm.homeWork20SpringBoot.service.impl.Employee;
 import java.util.List;
 
 public interface EmployeeInfo {
+//    static int departmentNumberGenerator() {
+//    }
+//    static int departmentNumberGenerator() {
+//    }
 //    String enterNewEmployee(String surname, String name, String fatherName);
 
     public String greeting();
@@ -13,9 +17,15 @@ public interface EmployeeInfo {
 
     public void enterNewEmployee(Employee employee);
 
-    public int departmentNumberGenerator();
+//    public static int departmentNumberGenerator();
 
-    public int salaryValueGenerator();
+//    static int departmentNumberGenerator();
+
+//    int departmentNumberGenerator();
+
+//    private static int departmentNumberGenerator();
+
+    int salaryValueGenerator();
 
 //    int sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(int sampleDepartmentNumber);
 
