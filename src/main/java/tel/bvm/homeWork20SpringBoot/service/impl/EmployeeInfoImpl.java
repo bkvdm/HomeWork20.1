@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 
 
-
 @Service
 public class EmployeeInfoImpl implements EmployeeInfo {
 
@@ -51,6 +50,19 @@ public class EmployeeInfoImpl implements EmployeeInfo {
     @Override
     public void enterNewEmployee(Employee employee) {
         employeeDataArchive().add(employee);
+    }
+
+    @Override
+    public StringBuilder print() {
+        return archiveToPrint(employeeDataArchive());
+    }
+
+    public StringBuilder archiveToPrint(List<Employee> employeeDataArchive) {
+        StringBuilder print = new StringBuilder();
+        for (int i = 0; i < employeeDataArchive.size(); i++) {
+            print.append("employees = ").append(employeeDataArchive.get(i));
+        }
+        return print;
     }
 
     @Override

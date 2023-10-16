@@ -47,12 +47,18 @@ public class ControllerEmployee {
                 "employee/sample/departmentNumber?=100_000";
     }
 
+    @GetMapping(path = "employee/print")
+    public StringBuilder archiveToPrint() {
+        return employeeInfo.print();
+    }
+
     @GetMapping(path = "employee/sample")
     public int sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(@RequestParam(value = "departmentNumber", required = false) int sampleDepartmentNumber,
                                                                       @RequestParam(value = "indexSalary", required = false) int sampleIndexSalary,
                                                                       @RequestParam(value = "salaryParameter", required = false) int sampleSalaryParameter) {
         return employeeInfo.sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(sampleDepartmentNumber, sampleIndexSalary, sampleSalaryParameter);
     }
+}
 
 //    @GetMapping(path = "employee/sample")
 //    public int sampleIndexSalary(@RequestParam(value = "indexSalary", required = false) int sampleIndexSalary) {
@@ -63,4 +69,3 @@ public class ControllerEmployee {
 //    public int sampleSalaryValue(@RequestParam(value = "salaryValue", required = false) int sampleSalaryValue) {
 //        return employeeInfo.sampleSalaryValue;
 //    }
-}

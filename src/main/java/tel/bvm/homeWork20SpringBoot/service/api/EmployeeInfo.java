@@ -21,6 +21,10 @@ public interface EmployeeInfo {
 
 //    int sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(int sampleDepartmentNumber, int sampleIndexSalary);
 
+    StringBuilder archiveToPrint(List<Employee> employees);
+
+    StringBuilder print();
+
     int sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(int sampleDepartmentNumber, int sampleIndexSalary, int sampleSalaryParameter);
 
 //    int sampleIndexSalary(int sampleIndexSalary);
