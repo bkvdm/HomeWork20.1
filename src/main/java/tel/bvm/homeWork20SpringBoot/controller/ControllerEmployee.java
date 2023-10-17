@@ -54,18 +54,8 @@ public class ControllerEmployee {
 
     @GetMapping(path = "employee/sample")
     public String sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(@RequestParam(value = "departmentNumber", required = false) int sampleDepartmentNumber,
-                                                                      @RequestParam(value = "indexSalary", required = false) int sampleIndexSalary,
-                                                                      @RequestParam(value = "salaryParameter", required = false) int sampleSalaryParameter) {
+                                                                         @RequestParam(value = "indexSalary", required = false) int sampleIndexSalary,
+                                                                         @RequestParam(value = "salaryParameter", required = false) int sampleSalaryParameter) {
         return employeeInfo.sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(sampleDepartmentNumber, sampleIndexSalary, sampleSalaryParameter);
     }
 }
-
-//    @GetMapping(path = "employee/sample")
-//    public int sampleIndexSalary(@RequestParam(value = "indexSalary", required = false) int sampleIndexSalary) {
-//        return employeeInfo.sampleIndexSalary;
-//    }
-
-//    @GetMapping(path = "employee/sample")
-//    public int sampleSalaryValue(@RequestParam(value = "salaryValue", required = false) int sampleSalaryValue) {
-//        return employeeInfo.sampleSalaryValue;
-//    }

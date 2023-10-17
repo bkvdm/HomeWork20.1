@@ -30,7 +30,6 @@ public class EmployeeInfoImpl implements EmployeeInfo {
                 "http://localhost:8080/employee/newEmployee?surname=Яковлев&name=Яков&fatherName=Михайлович";
     }
 
-//    @Override
     public List<Employee> employeeDataArchive() {
         List<Employee> employeeDataArchive = new ArrayList<>(Arrays.asList(
                 new Employee("Иванов", "Иван", "Иванович", departmentNumberGenerator(), salaryValueGenerator()),
@@ -69,12 +68,6 @@ public class EmployeeInfoImpl implements EmployeeInfo {
     @Override
     public String sampleDepartmentNumberAndIndexSalaryAndSalaryParameter(int sampleDepartmentNumber, int sampleIndexSalary, int sampleSalaryParameter) {
 
-//        employeeWithMaxSalary(sampleDepartmentNumber, employeeDataArchive());
-//        employeeWithMinSalary(sampleDepartmentNumber, employeeDataArchive());
-//        sumSalary(sampleDepartmentNumber, employeeDataArchive());
-//        salaryIndexation(sampleIndexSalary, sampleDepartmentNumber, employeeDataArchive());
-//        salarySamplingParameter(sampleSalaryParameter, employeeDataArchive());
-
         String printMaxSalary = employeeWithMaxSalary(sampleDepartmentNumber, employeeDataArchive());
         String printMinSalary = employeeWithMinSalary(sampleDepartmentNumber, employeeDataArchive());
         String printSumSalary = sumSalary(sampleDepartmentNumber, employeeDataArchive());
@@ -83,12 +76,6 @@ public class EmployeeInfoImpl implements EmployeeInfo {
 
         return printMaxSalary + printMinSalary + printSumSalary + printSalaryIndexation + printSalarySamplingParameter;
     }
-
-//    @Override
-//    public int sampleIndexSalary(int sampleIndexSalary) {
-//
-//        return sampleIndexSalary;
-//    }
 
     public String employeeWithMaxSalary(int selectedDepartment, List<Employee> employeeDataArchive) {
         int maxSalary = 0;
